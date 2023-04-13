@@ -1,1 +1,647 @@
-[]
+[
+    {
+        "id": "52a00494423f0b86",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "870c1f8fed79dc28",
+        "type": "tab",
+        "label": "EXAMPLES ",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "26850bb101998f35",
+        "type": "subflow",
+        "name": "Manufacturing data ",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 200,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "dd5b41f34bb54382"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "dd5b41f34bb54382",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "23de3c47467f5fd6",
+        "type": "subflow",
+        "name": "Evironmental Data",
+        "info": "# **Description**\n\nThe Environmental Data Simulator node in Node-RED simulates data from a variety of environmental sensors commonly used in IoT (Internet of Things) and IIoT (Industrial Internet of Things) applications. The node generates random values within specified ranges for different sensor data points, including temperature, humidity, pressure, air quality, light intensity, soil moisture, water temperature, wind speed, and more. The values gradually ramp up or down in a realistic manner, with randomness introduced in the increment step.\n\nThis node is useful for testing and developing environmental monitoring applications without the need for physical sensors. It can also be used for demonstration purposes to showcase data-driven applications.\n\n## **Usage**\n\nImport the Environmental Data Simulator node into your Node-RED workspace.\n\nDrag the Environmental Data Simulator node from the palette to your flow editor.\n\nTo trigger the sensor data simulation, use an Inject node. Connect the output of the Inject node to the input of the Environmental Data Simulator node.\n\nConfigure the Inject node with the desired trigger settings. You can choose to manually trigger the simulation by clicking the Inject node's button or to automatically trigger the simulation at regular intervals. To set up automatic triggering, select \"Interval\" in the Inject node's settings and specify the desired time interval (e.g., every 5 seconds).\n\nTo view the simulated sensor data, use a Debug node. Connect the output of the Environmental Data Simulator node to the input of the Debug node. Configure the Debug node to display the complete message object or just the payload.\n\nDeploy the flow.\n\nIf you have set up manual triggering, click the button on the Inject node to generate simulated sensor data. If you have set up automatic triggering, the node will automatically generate sensor data at the specified interval.\n\nThe simulated sensor data will appear in the Debug sidebar. You can also connect the output to other nodes in your flow for further processing or visualization.\n\n## **Output Format**\n\nThe Environmental Data Simulator node outputs a message object with the simulated sensor data in the msg.payload property. The payload is an object containing key-value pairs for each sensor data point. The keys represent the names of the sensor data points, and the values represent the corresponding simulated data.\n\nExample of the output payload:\n\n\n{\n\n    \"Temperature °F\": 75,\n    \"Humidity %\": 45,\n    \"Pressure Psi\": 25,\n    \"Air Quality AQI\": 85,\n    \"Light Intensity Lux\": 2000,\n    \"Soil Moisture %\": 70,\n    \"Water Temperature °F\": 65,\n    \"Wind Speed mph\": 12,\n    // ... additional sensor data points\n\n}\n\nTo access individual sensor data points in a subsequent function node, use the msg.payload property followed by the key representing the desired sensor data point. For example:\n`\n - \nvar temperature = msg.payload[\"Temperature °F\"];\n - \nvar humidity = msg.payload[\"Humidity %\"];\n - \nvar airQuality = msg.payload[\"Air Quality AQI\"];\n `\n## **Notes**\nThe value ranges and sensor data points can be customized within the node's code.\n - The Environmental Data Simulator node uses context variables to retain state between runs, allowing values to ramp up and down in a dynamic manner.\n - The Inject node allows you to manually or automatically trigger the sensor data simulation as needed.\n - The Debug node provides a convenient way to view the simulated sensor data in the Debug sidebar.",
+        "category": "",
+        "in": [
+            {
+                "x": 240,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "9d46379721607de5"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 510,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "9d46379721607de5",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {
+            "module": "node-red-contrib-evironmental-data-simulator",
+            "type": "Simulator",
+            "version": "1.0.0",
+            "author": "Bismark Aguocha",
+            "desc": "Simulates data from a variety of environmental sensors commonly used in IoT (Internet of Things) and IIoT (Industrial Internet of Things) applications. The node generates random values within specified ranges for different sensor data points, including temperature, humidity, pressure, air quality, light intensity, soil moisture, water temperature, wind speed, and more. The values gradually ramp up or down in a realistic manner, with randomness introduced in the increment step.",
+            "keywords": "Random Data generator, iiot, iot",
+            "license": "MIT"
+        },
+        "color": "#87A980",
+        "inputLabels": [
+            "Triger"
+        ],
+        "outputLabels": [
+            "Output",
+            ""
+        ],
+        "icon": "node-red-dashboard/ui_numeric.png"
+    },
+    {
+        "id": "ad86b0196d571727",
+        "type": "ui_spacer",
+        "z": "870c1f8fed79dc28",
+        "name": "spacer",
+        "group": "a2cfad286d707dbd",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b528550a2a01f384",
+        "type": "ui_spacer",
+        "z": "870c1f8fed79dc28",
+        "name": "spacer",
+        "group": "a2cfad286d707dbd",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a2cfad286d707dbd",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "f876d77cc24741fe",
+        "order": 1,
+        "disp": true,
+        "width": "32",
+        "collapse": false
+    },
+    {
+        "id": "f876d77cc24741fe",
+        "type": "ui_tab",
+        "name": "Enviromental Data",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "dd5b41f34bb54382",
+        "type": "function",
+        "z": "26850bb101998f35",
+        "name": "manufacturing Data Gen",
+        "func": "// Retrieve the state object from the global context or initialize it if not available\nlet state = global.get(\"manufacturingState\") || {\n    materialTemp: 60,\n    materialLength: 5,\n    materialWidth: 2,\n    materialHeight: 0.5,\n    materialWeight: 1,\n    conveyorSpeed: 10,\n    productionRate: 50,\n    vibrations: 0,\n    ambientTemp: 50,\n    ambientHumidity: 40,\n    noiseLevel: 60,\n    powerConsumption: 10\n};\n\n// Function to produce smooth ramping values within a specified range\nfunction rampValue(value, min, max, step) {\n    value += step;\n\n    // Wrap around the value if it exceeds the max\n    if (value > max) {\n        value = min + (value - max);\n    }\n\n    return value;\n}\n\n// Function to simulate cyclical behavior of certain metrics\nfunction cycleValue(value, min, max, amplitude, phase) {\n    value = min + (max - min) / 2 + amplitude * Math.sin(phase);\n    return value;\n}\n\n// Generate the next manufacturing process metrics\nstate.materialTemp = rampValue(state.materialTemp, 60, 400, 1);\nstate.materialLength = rampValue(state.materialLength, 5, 20, 0.1);\nstate.materialWidth = rampValue(state.materialWidth, 2, 10, 0.05);\nstate.materialHeight = rampValue(state.materialHeight, 0.5, 5, 0.02);\nstate.materialWeight = rampValue(state.materialWeight, 1, 20, 0.2);\nstate.conveyorSpeed = rampValue(state.conveyorSpeed, 10, 100, 0.5);\nstate.productionRate = rampValue(state.productionRate, 50, 500, 2);\nstate.vibrations = cycleValue(state.vibrations, 0, 10, 1, state.productionRate / 100);\nstate.ambientTemp = cycleValue(state.ambientTemp, 50, 90, 10, state.materialTemp / 100);\nstate.ambientHumidity = cycleValue(state.ambientHumidity, 20, 80, 20, state.materialTemp / 50);\nstate.noiseLevel = cycleValue(state.noiseLevel, 60, 100, 10, state.productionRate / 100);\nstate.powerConsumption = rampValue(state.powerConsumption, 10, 1000, 5);\n\n// Update the payload with the manufacturing process metrics\nvar ManufacturingMetrics = {\n    \"Material Temperature °F\": state.materialTemp,\n    \"Material Length inches\": state.materialLength,\n    \"Material Width inches\": state.materialWidth,\n    \"Material Height inches\": state.materialHeight,\n    \"Material Weight pounds\": state.materialWeight,\n    \"Conveyor Belt Speed feet/min\": state.conveyorSpeed,\n    \"Production Rate units/hour\": state.productionRate,\n    \"Vibrations mm/s\": state.vibrations,\n    \"Ambient Temperature °F\": state.ambientTemp,\n    \"Ambient Humidity %\": state.ambientHumidity,\n    \"Noise Level dB\": state.noiseLevel,\n    \"Power Consumption kWh\": state.powerConsumption\n};\n\nmsg.payload = ManufacturingMetrics;\n\n// Store the updated state object back to the global context\nglobal.set(\"manufacturingState\", state);\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "info": "This is a Number Generator"
+    },
+    {
+        "id": "9d46379721607de5",
+        "type": "function",
+        "z": "23de3c47467f5fd6",
+        "name": "Data Gen",
+        "func": "// Function to produce ramping values within a specified range\nfunction rampValue(contextVar, min, max) {\n    // Get the last value and direction from context variables\n    let value = context.get(contextVar) || min;\n    let direction = context.get(contextVar + \"Direction\") || 1;\n\n    // Generate a random step within the range 0-10\n    let step = Math.floor(Math.random() * 11);\n\n    // Calculate the next value\n    value += direction * step;\n    if (value >= max || value <= min) {\n        direction *= -1; // Reverse direction when reaching limits\n    }\n\n    // Keep value within bounds\n    value = Math.max(min, Math.min(max, value));\n\n    // Store the updated value and direction in context variables\n    context.set(contextVar, value);\n    context.set(contextVar + \"Direction\", direction);\n\n    return value;\n}\n\n// Generate the next environment metrics with units\nconst temp = rampValue(\"temp\", -50, 500); // Temperature range: -50°F to 500°F\nconst hum = rampValue(\"hum\", 1, 100); // Humidity range: 1% to 100%\nconst pre = rampValue(\"pre\", 10, 1050); // Pressure range: 10 Psi to 1050 Psi\n\n// Additional sensor data points\nconst lightIntensity = rampValue(\"lightIntensity\", 0, 10000); // Light Intensity range: 0 Lux to 10000 Lux\nconst airQuality = rampValue(\"airQuality\", 0, 500); // Air Quality range: 0 AQI to 500 AQI\nconst soilMoisture = rampValue(\"soilMoisture\", 0, 100); // Soil Moisture range: 0% to 100%\nconst waterTemperature = rampValue(\"waterTemperature\", 32, 212); // Water Temperature range: 32°F to 212°F\nconst windSpeed = rampValue(\"windSpeed\", 0, 150); // Wind Speed range: 0 mph to 150 mph\nconst windDirection = rampValue(\"windDirection\", 0, 360); // Wind Direction range: 0° to 360°\nconst barometricPressure = rampValue(\"barometricPressure\", 27, 31); // Barometric Pressure range: 27 inHg to 31 inHg\nconst precipitation = rampValue(\"precipitation\", 0, 5); // Precipitation range: 0 in/hr to 5 in/hr\nconst co2Concentration = rampValue(\"co2Concentration\", 400, 5000); // CO2 Concentration range: 400 ppm to 5000 ppm\nconst vocConcentration = rampValue(\"vocConcentration\", 0, 1000); // VOC Concentration range: 0 ppb to 1000 ppb\n\n// Update the payload with the environment metrics and additional sensor data points\n var Enviromental = {\n    \"Temperature °F\": temp,\n    \"Humidity %\": hum,\n    \"Pressure Psi\": pre,\n    \"Light Intensity Lux\": lightIntensity,\n    \"Air Quality AQI\": airQuality,\n    \"Soil Moisture %\": soilMoisture,\n    \"Water Temperature °F\": waterTemperature,\n    \"Wind Speed mph\": windSpeed,\n    \"Wind Direction °\": windDirection,\n    \"Barometric Pressure inHg\": barometricPressure,\n    \"Precipitation in/hr\": precipitation,\n    \"CO2 Concentration ppm\": co2Concentration,\n    \"VOC Concentration ppb\": vocConcentration\n};\nmsg.payload = Enviromental\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 160,
+        "wires": [
+            []
+        ],
+        "info": "This is a Number Generator"
+    },
+    {
+        "id": "a992f82b58aba701",
+        "type": "inject",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "2e1db14459e9ef95",
+                "467e483e7199086c"
+            ]
+        ]
+    },
+    {
+        "id": "02b91d333d2ee487",
+        "type": "debug",
+        "z": "870c1f8fed79dc28",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1b4ff46aa1789587",
+        "type": "ui_chart",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "group": "a2cfad286d707dbd",
+        "order": 1,
+        "width": "10",
+        "height": "10",
+        "label": "Temprature (°F)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No Data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "600",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 620,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5488166f80197be9",
+        "type": "function",
+        "z": "870c1f8fed79dc28",
+        "name": "temp",
+        "func": "var temperature = msg.payload[\"Temperature °F\"];\nmsg.payload = temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "1b4ff46aa1789587"
+            ]
+        ]
+    },
+    {
+        "id": "1e6635fe0b18ba08",
+        "type": "status",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "scope": null,
+        "x": 60,
+        "y": 20,
+        "wires": [
+            [
+                "adbbcaa7628318a2"
+            ]
+        ]
+    },
+    {
+        "id": "adbbcaa7628318a2",
+        "type": "debug",
+        "z": "870c1f8fed79dc28",
+        "name": "Status",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 210,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "39a31228fde27985",
+        "type": "function",
+        "z": "870c1f8fed79dc28",
+        "name": "Pressure ",
+        "func": "var Pressure  = msg.payload[\"Pressure Psi\"];\nmsg.payload = Pressure;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "440da88fc28a2860"
+            ]
+        ]
+    },
+    {
+        "id": "eb87c847e07fe74b",
+        "type": "function",
+        "z": "870c1f8fed79dc28",
+        "name": "hum",
+        "func": "var Humidity = msg.payload[\"Humidity %\"];\nmsg.payload = Humidity ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 425.00000381469727,
+        "y": 274.99997901916504,
+        "wires": [
+            [
+                "d3715b1a748ee8fe"
+            ]
+        ]
+    },
+    {
+        "id": "865075bf36327529",
+        "type": "link in",
+        "z": "870c1f8fed79dc28",
+        "name": "charts_in",
+        "links": [],
+        "x": 265,
+        "y": 260,
+        "wires": [
+            [
+                "5488166f80197be9",
+                "eb87c847e07fe74b",
+                "39a31228fde27985"
+            ]
+        ]
+    },
+    {
+        "id": "d3715b1a748ee8fe",
+        "type": "ui_chart",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "group": "a2cfad286d707dbd",
+        "order": 1,
+        "width": "10",
+        "height": "10",
+        "label": "Humidity (%)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No Data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "110",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 585.0000038146973,
+        "y": 274.99997901916504,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "440da88fc28a2860",
+        "type": "ui_chart",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "group": "a2cfad286d707dbd",
+        "order": 1,
+        "width": "12",
+        "height": "10",
+        "label": "Pressure(Psi)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No Data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "1600",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 595.0000038146973,
+        "y": 334.99997901916504,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e1db14459e9ef95",
+        "type": "subflow:23de3c47467f5fd6",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "02b91d333d2ee487"
+            ]
+        ]
+    },
+    {
+        "id": "467e483e7199086c",
+        "type": "subflow:26850bb101998f35",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "01c9d1f10ee08d75",
+                "5e4ed0c28649a656"
+            ]
+        ]
+    },
+    {
+        "id": "01c9d1f10ee08d75",
+        "type": "debug",
+        "z": "870c1f8fed79dc28",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "4599b6d6b9ee7e75",
+        "type": "ui_chart",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "group": "a2cfad286d707dbd",
+        "order": 1,
+        "width": "10",
+        "height": "10",
+        "label": "Temprature (°F) Manufacturing",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No Data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "600",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 730,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b3bfb4e6027cc14",
+        "type": "function",
+        "z": "870c1f8fed79dc28",
+        "name": "temp",
+        "func": "var temperature = msg.payload[\"Material Temperature °F\"];\nmsg.payload = temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 560,
+        "wires": [
+            [
+                "4599b6d6b9ee7e75"
+            ]
+        ]
+    },
+    {
+        "id": "8801515446b0d393",
+        "type": "function",
+        "z": "870c1f8fed79dc28",
+        "name": "hum",
+        "func": "var Humidity = msg.payload[\"Ambient Humidity %\"];\nmsg.payload = Humidity ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 620,
+        "wires": [
+            [
+                "d2141274724ac6e0"
+            ]
+        ]
+    },
+    {
+        "id": "0858db0dd1e3be9c",
+        "type": "link in",
+        "z": "870c1f8fed79dc28",
+        "name": "charts_in2",
+        "links": [
+            "5e4ed0c28649a656"
+        ],
+        "x": 335,
+        "y": 580,
+        "wires": [
+            [
+                "0b3bfb4e6027cc14",
+                "8801515446b0d393"
+            ]
+        ]
+    },
+    {
+        "id": "d2141274724ac6e0",
+        "type": "ui_chart",
+        "z": "870c1f8fed79dc28",
+        "name": "",
+        "group": "a2cfad286d707dbd",
+        "order": 1,
+        "width": "10",
+        "height": "10",
+        "label": "Humidity (%) Manufacturing",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No Data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "110",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 720,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5e4ed0c28649a656",
+        "type": "link out",
+        "z": "870c1f8fed79dc28",
+        "name": "charts2",
+        "mode": "link",
+        "links": [
+            "0858db0dd1e3be9c"
+        ],
+        "x": 275,
+        "y": 520,
+        "wires": []
+    }
+]
